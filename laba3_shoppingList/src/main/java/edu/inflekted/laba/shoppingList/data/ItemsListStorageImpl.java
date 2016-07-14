@@ -33,6 +33,12 @@ public class ItemsListStorageImpl implements ItemsListStorage {
     }
 
     private Item getItemById(final Long id) {
-        return (Item) this.items.stream().filter(item -> Objects.equals(item.getId(), id));
+      Item itemFound = null;
+      for (Item item : getAllItems()) {
+        if (item.getId() == id) {
+          itemFound = item;
+        }
+      }
+      return itemFound;
     }
 }
